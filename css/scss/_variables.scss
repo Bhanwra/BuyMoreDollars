@@ -1,0 +1,34 @@
+// __defaults__
+    $gutter: 1rem;
+    $gridSize: 12;
+    $defaultBorderWidth: 2px;
+    $defaultBorderStyle: solid;
+
+    // incremental change for each padding / margin increase using classes (margin-1 = 0.5rem, margin-2 = 1.0rem ... margin-n = (0.5rem * n)
+    $boxModelStep: 0.5rem;
+    
+    #defaultShadow {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    }
+
+    #defaultTransition {
+        transition: linear 100ms;
+    }
+
+
+// __colors__
+    $color-primary: #39603d !default;
+    $color-secondary: #daded4 !default;
+    $color-contrast: #fdb713 !default;
+    $color-light: ghostwhite !default;
+    $color-success: #417939 !default;
+    $color-danger: #ff0606 !default;
+
+    $color-map: (
+        "primary": $color-primary,
+        "secondary": $color-secondary,
+        "contrast": $color-contrast,
+        "light": $color-light,
+        "success": $color-success,
+        "danger": $color-danger
+    )

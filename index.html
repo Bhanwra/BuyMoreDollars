@@ -7,129 +7,141 @@
     <meta name="author" content="Dylan Mills, Karan Bhanwra">
     <meta name="keywords" content="HTML, CSS">
     <meta name="description" content="Basic HTML form">
+
     <title>Form</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+
+    <link rel="stylesheet" href="./css/main.min.css">
 </head>
 </head>
 
 <body>
-    <section id="form">
-        <form>
-            <h2>SIGN UP</h2>
-            <h3>Personal Information</h3>
-            <div class="flex">
-                <div class="flex-item">
-                    <label for="first">First Name:</label><br>
-                    <input type="text" id="first" name="first"><br>
+
+    <main class="wrapper">
+        <section class="background-secondary padding-x-2 padding-y-5 shadow">
+            <form id="form">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2>SIGN UP</h2>
+                    </div>
+                    <div class="col-12 padding-bottom-0 padding-top-3">
+                        <h3>Personal Information</h3>
+                    </div>
                 </div>
-                <div class="flex-item">
-                    <label for="last">Last Name:</label><br>
-                    <input type="text" id="last" name="last"><br>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter full name">
+                            <p class="error" id="nameError"></p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <label for="birthday">Date of Birth:</label><br>
-            <input type="date" id="birthday" name="birthday"><br>
-
-            <h3>Contact Information</h3>
-            <label for="phone">Phone Number</label><br>
-            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"><br>
-
-
-            <label for="address">Address: </label><br>
-            <input type="text" id="address" name="address"><br>
-            <div class="flex">
-                <div class="flex-item">
-                    <label for="city">City:</label><br>
-                    <input type="text" id="city" name="city"><br>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <label for="birthday">Date of Birth</label>
+                            <input type="date" id="birthday" name="birthday" value="2022-09-09">
+                            <p class="error" id="birthdayError"></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-item">
-                    <label for="province">Province:</label><br>
-                    <input type="text" id="province" name="province"><br>
+
+                <div class="row">
+                    <div class="col-12 padding-bottom-0 padding-top-3">
+                        <h3>Contact Information</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="flex">
-                <div class="flex-item">
-                    <label for="zip">Zip Code:</label><br>
-                    <input type="text" id="zip" name="zip"><br>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                            <p class="error" id="phoneError"></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-item">
-                    <label for="country">Country:</label><br>
-                    <input type="text" id="country" name="country"><br>
+                
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" name="address">
+                            <p class="error" id="addressError"></p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city">
+                            <p class="error" id="cityError"></p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group">
+                            <label for="province">Province</label>
+                            <input type="text" id="province" name="province">
+                            <p class="error" id="provinceError"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-group">
+                            <label for="zip">Zip Code</label>
+                            <input type="text" id="zip" name="zip" class="text-upper">
+                            <p class="error" id="zipError"></p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" name="country">
+                            <p class="error" id="countryError"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email">
+                            <p class="error" id="emailError"></p>
+                        </div>
+                    </div>
+                </div>
 
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email"><br>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-group has-checkbox">
+                            <input type="checkbox" id="checkbox1" name="checkbox" required>
+                            <label for="checkbox1">I consent to the rules and regulations</label>
+                        </div>
+                    </div>
+                </div>
 
-            <hr>
-            <label for="checkbox1">I consent to the rules and regulations</label>
-            <input type="checkbox" id="checkbox1" name="checkbox"><br>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-group has-checkbox">
+                            <input type="checkbox" id="checkbox2" name="checkbox" required>
+                            <label for="checkbox2">I consent to receiving promotional emails</label>
+                        </div>
+                    </div>
+                </div>
 
-            <label for="checkbox2">I consent to receiving promotional emails</label>
-            <input type="checkbox" id="checkbox2" name="checkbox"><br>
-
-            <input type="submit" class="btn">
-        </form>
-    </section>
-    <style>
-        * {
-            font-family: Arial, Helvetica, sans-serif;
-            box-sizing: border-box;
-        }
-
-        section {
-            color: #262f32;
-            padding: 15px;
-            background: #daded4;
-            position: absolute;
-            left: 50%;
-            width: 380px;
-            box-shadow: rgba(0, 0, 0, 0.308) 2px 2px 12px;
-            transform: translateX(-50%);
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input:not(input[type=checkbox]) {
-            border: solid 2px #262f32;
-            box-shadow: #262f322f 0px 5px 5px;
-            height: 35px;
-            border-radius: 5px;
-            width: 100%;
-            margin: 15px auto;
-        }
-
-        .flex {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .flex-item {
-            width: 48%;
-        }
-
-        input[type=submit] {
-            font-weight: bold;
-            outline-style: none;
-        }
-
-        .btn {
-            font-family: Arial !important;
-            font-weight: bold;
-            outline-style: none;
-        }
-
-        .btn:hover,
-        input[type=checkbox]:hover {
-            cursor: pointer;
-        }
-    </style>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <input type="submit" class="btn btn-block">
+                    </div>
+                </div>
+    
+            </form>
+        </section>
+    </main>
+    
+    <script src="./js/main.js"></script>
 </body>
 
 </html>

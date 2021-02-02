@@ -1,0 +1,21 @@
+@import 'variables';
+@import 'typography';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'theme', Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+
+html {
+    background-color: ghostwhite;
+}
+
+@import 'grid';
+@import 'box_model';
+@import 'colors';
+@import 'section';
+@import 'input';
+@import 'button';

@@ -1,0 +1,67 @@
+.input-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        font-size: small;
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+    }
+
+    &.has-checkbox {
+        flex-direction: row;
+        align-items: center;
+
+        input[type="checkbox"] {
+            margin: 0.25rem;
+        }
+
+        label {
+            margin: 0;
+        }
+    }
+
+    p.error {
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-top: 0.25rem;
+        color: red;
+        display: none;
+
+        &:before {
+            content: '\0021';
+            margin: 0.25rem;
+        }
+    }
+
+    input[class='is-invalid'] + p.error {
+        display: block;
+    }
+
+}
+
+input:not([type="checkbox"]):not([type="submit"]) {
+    display: block;
+    border-radius: 5px;
+    width: 100%;
+    border: #{$defaultBorderStyle} #{$defaultBorderWidth} white;
+    padding: 0.5rem;
+    outline: none;
+    transition: linear 100ms;
+
+    &:focus {
+        border-color: #{$color-primary};
+        @extend #defaultShadow;
+    }
+
+    &.is-valid {
+        border-color: #{$color-success};
+        @extend #defaultShadow;
+    }
+
+    &.is-invalid {
+        border-color: #{$color-danger};
+        @extend #defaultShadow;
+    }
+
+}

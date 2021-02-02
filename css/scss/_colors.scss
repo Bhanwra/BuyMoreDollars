@@ -1,0 +1,17 @@
+.background {
+    @each $key, $color in $color-map {
+        &-#{$key} { background-color: #{$color} !important; }
+    }
+}
+
+.text {
+    @each $key, $color in $color-map {
+        &-#{$key} { color: #{$color} !important; }
+    }
+}
+
+.border {
+    @each $key, $color in $color-map {
+        &-#{$key} { border: #{$defaultBorderStyle} #{$defaultBorderWidth} #{$color} !important; }
+    }
+}
