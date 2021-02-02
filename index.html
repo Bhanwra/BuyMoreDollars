@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Dylan Mills, Karan Bhanwra">
+    <meta name="keywords" content="HTML, CSS">
+    <meta name="description" content="Basic HTML form">
+    <title>Form</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+</head>
+
+<body>
+    <section id="form">
+        <form>
+            <h2>SIGN UP</h2>
+            <h3>Personal Information</h3>
+            <div class="flex">
+                <div class="flex-item">
+                    <label for="first">First Name:</label><br>
+                    <input type="text" id="first" name="first"><br>
+                </div>
+                <div class="flex-item">
+                    <label for="last">Last Name:</label><br>
+                    <input type="text" id="last" name="last"><br>
+                </div>
+            </div>
+            <label for="birthday">Date of Birth:</label><br>
+            <input type="date" id="birthday" name="birthday"><br>
+
+            <h3>Contact Information</h3>
+            <label for="phone">Phone Number</label><br>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"><br>
+
+
+            <label for="address">Address: </label><br>
+            <input type="text" id="address" name="address"><br>
+            <div class="flex">
+                <div class="flex-item">
+                    <label for="city">City:</label><br>
+                    <input type="text" id="city" name="city"><br>
+                </div>
+                <div class="flex-item">
+                    <label for="province">Province:</label><br>
+                    <input type="text" id="province" name="province"><br>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="flex-item">
+                    <label for="zip">Zip Code:</label><br>
+                    <input type="text" id="zip" name="zip"><br>
+                </div>
+                <div class="flex-item">
+                    <label for="country">Country:</label><br>
+                    <input type="text" id="country" name="country"><br>
+                </div>
+            </div>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+
+            <hr>
+            <label for="checkbox1">I consent to the rules and regulations</label>
+            <input type="checkbox" id="checkbox1" name="checkbox"><br>
+
+            <label for="checkbox2">I consent to receiving promotional emails</label>
+            <input type="checkbox" id="checkbox2" name="checkbox"><br>
+
+            <input type="submit" class="btn">
+        </form>
+    </section>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+        }
+
+        section {
+            color: #262f32;
+            padding: 15px;
+            background: #daded4;
+            position: absolute;
+            left: 50%;
+            width: 380px;
+            box-shadow: rgba(0, 0, 0, 0.308) 2px 2px 12px;
+            transform: translateX(-50%);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input:not(input[type=checkbox]) {
+            border: solid 2px #262f32;
+            box-shadow: #262f322f 0px 5px 5px;
+            height: 35px;
+            border-radius: 5px;
+            width: 100%;
+            margin: 15px auto;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .flex-item {
+            width: 48%;
+        }
+
+        input[type=submit] {
+            font-weight: bold;
+            outline-style: none;
+        }
+
+        .btn {
+            font-family: Arial !important;
+            font-weight: bold;
+            outline-style: none;
+        }
+
+        .btn:hover,
+        input[type=checkbox]:hover {
+            cursor: pointer;
+        }
+    </style>
+</body>
+
+</html>
