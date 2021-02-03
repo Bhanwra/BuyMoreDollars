@@ -37,7 +37,7 @@ function initForm() {
         new Input('province', 'Please enter a valid province', charChecker),
         new Input('zip', 'Please enter a valid zip code', zipChecker),
         new Input('country', 'Please enter a valid country', charChecker),
-        new Input('email', 'Please enter a valid date', emailChecker)
+        new Input('email', 'Please enter a valid email', emailChecker)
     ]
 
     form.addEventListener("submit", formSubmission)
