@@ -842,6 +842,7 @@ html {
 
 .input-group.has-checkbox label {
   margin: 0;
+  cursor: pointer;
 }
 
 .input-group p.error {
@@ -857,7 +858,7 @@ html {
   margin: 0.25rem;
 }
 
-.input-group input[class='is-invalid'] + p.error {
+.input-group input.is-invalid + p.error {
   display: block;
 }
 

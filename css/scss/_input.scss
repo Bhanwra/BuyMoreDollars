@@ -18,6 +18,7 @@
 
         label {
             margin: 0;
+            cursor: pointer;
         }
     }
 
@@ -34,7 +35,7 @@
         }
     }
 
-    input[class='is-invalid'] + p.error {
+    input.is-invalid + p.error {
         display: block;
     }
 
