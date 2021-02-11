@@ -65,14 +65,12 @@ function dateChecker(str, field) {
         return false;
     } else {
         let givenDate = new Date(Date.parse(str))
-        
-        if ( !ageGate(givenDate) ) {
-            field.errorMessage = "Ahoy Buckaroo! Looks like you aren't old enough. Come back in a few years."
-            return false;
-        }
 
         if ( givenDate.getTime() > Date.now() ) {
-            field.errorMessage = "It appears you are from the future."
+            field.errorMessage = "Woah! It appears you are from the future."
+            return false;
+        } else if ( !ageGate(givenDate) ) {
+            field.errorMessage = "Ahoy Buckaroo! Looks like you aren't old enough. Come back in a few years."
             return false;
         }
     }
