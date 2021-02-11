@@ -25,44 +25,49 @@
     p.error {
         font-size: 0.8rem;
         font-weight: bold;
-        margin-top: 0.25rem;
+        margin-top: 0rem;
         color: red;
-        display: none;
+        display: flex;
+        visibility: hidden;
+        justify-content: flex-start;
+        align-items: center;
 
         &:before {
-            content: '\0021';
-            margin: 0.25rem;
+            content: '\f06a';
+            margin: 0.3rem 0.25rem 0.25rem 0.25rem;
+            font-family: 'Line Awesome Free';
+            font-size: 1.25rem;
         }
     }
 
     input.is-invalid + p.error {
-        display: block;
+        visibility: visible;
     }
 
 }
 
 input:not([type="checkbox"]):not([type="submit"]) {
     display: block;
-    border-radius: 5px;
+    border-radius: 0;
     width: 100%;
     border: #{$defaultBorderStyle} #{$defaultBorderWidth} white;
     padding: 0.5rem;
     outline: none;
     transition: linear 100ms;
+    border-color: transparent;
+    border-bottom: solid 2px;
+    border-bottom-color: gainsboro;
 
     &:focus {
-        border-color: #{$color-primary};
-        @extend #defaultShadow;
+        border-bottom-color: #{$color-primary};
     }
 
     &.is-valid {
-        border-color: #{$color-success};
-        @extend #defaultShadow;
+        border-bottom-color: #{$color-success};
     }
 
     &.is-invalid {
-        border-color: #{$color-danger};
-        @extend #defaultShadow;
+        border-bottom-color: #{$color-danger};
     }
 
 }

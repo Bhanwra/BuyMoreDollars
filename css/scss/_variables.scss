@@ -23,6 +23,7 @@
     $color-light: ghostwhite !default;
     $color-success: #417939 !default;
     $color-danger: #ff0606 !default;
+    $color-white: white !default;
 
     $color-map: (
         "primary": $color-primary,
@@ -30,5 +31,11 @@
         "contrast": $color-contrast,
         "light": $color-light,
         "success": $color-success,
-        "danger": $color-danger
-    )
+        "danger": $color-danger,
+        "white": $color-white
+    );
+
+// common size map
+$size-map: (
+    "sm", "md", "lg", "xl", "xxl"
+);

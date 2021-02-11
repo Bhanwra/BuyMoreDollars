@@ -2,11 +2,11 @@
     text-transform: uppercase;
     font-weight: bold;
     padding: 0.5rem 1rem;
-    background-color: transparent;
+    background-color: $color-primary;
     border: $defaultBorderStyle $defaultBorderWidth $color-primary;
-    border-radius: 5px;
     cursor: pointer;
     letter-spacing: 3px;
+    color: $color-white;
 
     @extend #defaultTransition;
 

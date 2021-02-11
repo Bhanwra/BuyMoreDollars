@@ -7,5 +7,21 @@
             padding: $gutter * 0.5;
             width: calc(#{$var} / #{$gridSize} * 100%);
         }
+
+        >.offset-#{$var} {
+            margin-left: calc(#{$var} / #{$gridSize} * 100%);
+        }
+    }
+
+    &.justify-content {
+        &-center { justify-content: center; }
+        &-start { justify-content: flex-start; }
+        &-end { justify-content: flex-end; }
+    }
+
+    &.align-items {
+        &-center { align-items: center; }
+        &-start { align-items: flex-start; }
+        &-end { align-items: flex-end; }
     }
 }

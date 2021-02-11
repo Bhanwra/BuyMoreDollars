@@ -1,4 +1,10 @@
-let fields;
+let fields, defaultTimeout = 3000;
+
+Noty.overrideDefaults({
+    theme: 'mint',
+    layout: "bottomCenter",
+    timeout: defaultTimeout
+})
 
 class Input {
     constructor(id, errorMessage, checker) {
@@ -29,15 +35,15 @@ function initForm() {
     let form = document.querySelector("#form");
 
     fields = [
-        new Input('name', 'Please enter a valid name', charChecker),
-        new Input('birthday', 'Please enter a valid date', dateChecker),
-        new Input('phone', 'Please enter a valid phone number', phoneChecker),
-        new Input('address', 'Please enter a valid address', addressChecker),
-        new Input('city', 'Please enter a valid city', charChecker),
-        new Input('province', 'Please enter a valid province', charChecker),
-        new Input('zip', 'Please enter a valid zip code', zipChecker),
-        new Input('country', 'Please enter a valid country', charChecker),
-        new Input('email', 'Please enter a valid email', emailChecker)
+        new Input('name', 'Invalid name', charChecker),
+        new Input('birthday', 'Invalid date', dateChecker),
+        new Input('phone', 'Invalid phone number', phoneChecker),
+        new Input('address', 'Invalid address', addressChecker),
+        new Input('city', 'Invalid city', charChecker),
+        new Input('province', 'Invalid province', charChecker),
+        new Input('zip', 'Invalid zip code', zipChecker),
+        new Input('country', 'Invalid country', charChecker),
+        new Input('email', 'Invalid email', emailChecker)
     ]
 
     form.addEventListener("submit", formSubmission)
@@ -53,14 +59,17 @@ function charChecker(str) {
 }
 
 function dateChecker(str, field) {
-    console.log(`String to check: ${str}`)
-
     let pattern = /^[0-9]{4}[-]{1}[0-9]{2}[-]{1}[0-9]{2}$/
     if ( pattern.test(str) == false ) {
-        field.errorMessage = "Please enter a valid date."
+        field.errorMessage = "Invalid date"
         return false;
     } else {
         let givenDate = new Date(Date.parse(str))
+        
+        if ( !ageGate(givenDate) ) {
+            field.errorMessage = "Ahoy Buckaroo! Looks like you aren't old enough. Come back in a few years."
+            return false;
+        }
 
         if ( givenDate.getTime() > Date.now() ) {
             field.errorMessage = "It appears you are from the future."
@@ -112,7 +121,44 @@ function formSubmission(event) {
         }
     })
 
+    if ( errorCount > 0 ) {
+        let errorNoty = new Noty({
+            type: 'error',
+            text: 'Stop right there! You have some errors to fix.'
+        }).show();
+    } else {
+        // all goodie-good!
+        let successNoty = new Noty({
+            type: 'success',
+            text: 'Hold tight! Submitting your form.'
+        }).show()
+
+        successNoty.on("onClose", () => {
+            document.querySelector("#successModal").classList.add("show");
+        })
+    }
+
     console.log(`Errors: ${errorCount}`);
+}
+
+function ageGate(dob, minAge = 16) {
+    dob = new Date(dob)
+
+    let currentDate = new Date(Date.now())
+
+    if ( currentDate.getFullYear() - dob.getFullYear() > minAge ) {
+        return true;
+    } else if ( currentDate.getFullYear() - dob.getFullYear() == minAge ) {
+        if ( currentDate.getMonth() - dob.getMonth() > 0 ) {
+            return true;
+        } else if ( currentDate.getMonth() - dob.getMonth() == 0 ) {
+            if ( currentDate.getDate() - dob.getDate() > 0 ) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 document.addEventListener("DOMContentLoaded", function() {

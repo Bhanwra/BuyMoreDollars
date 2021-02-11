@@ -1,0 +1,49 @@
+.modal-container {
+    position: fixed;
+    overflow: auto;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    &.show {
+        display: flex;
+    }
+
+    &:before {
+        content: "";
+        position: fixed;
+        left: 0;
+        right: 0;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        background-color: #0008;
+        backdrop-filter: blur(10px);
+        z-index: -1;
+    }
+
+    .modal {
+        width: 360px;
+        max-width: 90%;
+        position: relative;
+        @extend #defaultShadow;
+
+        .modal-close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: inline-block;
+        }
+
+        .modal-body {
+            background-color: $color-white;
+            padding: $gutter;
+        }
+    }
+
+}

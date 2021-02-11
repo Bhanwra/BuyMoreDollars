@@ -37,3 +37,11 @@
 .shadow {
     @extend #defaultShadow;
 }
+
+.width {
+
+    @for $var from 0 through 10 {
+        &-#{$var * 10} { width: calc(#{$var} * 10%) !important; }
+    }
+
+}

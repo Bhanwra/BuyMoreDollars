@@ -1,7 +1,9 @@
 @font-face {
     font-family: 'theme';
-    src: url(./../../fonts/OpenSans-Regular.ttf);
+    src: url(./../../fonts/Quicksand-Regular.ttf);
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: $gutter * 0.5;
@@ -10,4 +12,14 @@ h1, h2, h3, h4, h5, h6 {
 .text {
     &-center { text-align: center; }
     &-upper { text-transform: uppercase; }
+}
+
+.font {
+    @for $i from 1 through length($size-map) {
+        $size: nth($size-map, $i);
+
+        &-#{$size} { font-size: calc(0.75rem + ((#{$i} - 1) * 0.25rem) ); }
+    }
+
+    &-bold { font-weight: bold; }
 }
