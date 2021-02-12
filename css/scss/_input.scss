@@ -30,13 +30,14 @@
         display: flex;
         visibility: hidden;
         justify-content: flex-start;
-        align-items: center;
+        align-items: baseline;
 
         &:before {
             content: '\f06a';
-            margin: 0.3rem 0.25rem 0.25rem 0.25rem;
-            font-family: 'Line Awesome Free';
-            font-size: 1.25rem;
+            margin: 0.25rem 0.25rem 0.75rem 0.25rem;
+            font-family: 'Font Awesome 5 Free';
+            font-size: 0.75rem;
+            line-height: 1;
         }
     }
 

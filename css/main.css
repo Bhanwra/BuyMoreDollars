@@ -16,6 +16,7 @@
 
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem;
+  color: #39603d;
 }
 
 .text-center {
@@ -1024,16 +1025,17 @@ html {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
 }
 
 .input-group p.error:before {
   content: '\f06a';
-  margin: 0.3rem 0.25rem 0.25rem 0.25rem;
-  font-family: 'Line Awesome Free';
-  font-size: 1.25rem;
+  margin: 0.25rem 0.25rem 0.75rem 0.25rem;
+  font-family: 'Font Awesome 5 Free';
+  font-size: 0.75rem;
+  line-height: 1;
 }
 
 .input-group input.is-invalid + p.error {
