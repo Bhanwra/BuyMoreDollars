@@ -2,7 +2,7 @@ let fields, defaultTimeout = 3000;
 
 Noty.overrideDefaults({
     theme: 'mint',
-    layout: "bottomCenter",
+    layout: "topCenter",
     timeout: defaultTimeout
 })
 
@@ -51,7 +51,7 @@ function initForm() {
 }
 
 function charChecker(str) {
-    let pattern = /^[a-z A-z]+$/
+    let pattern = /^[a-z A-z-.]+$/
     if ( pattern.test(str) == false ) {
         return false;
     }
