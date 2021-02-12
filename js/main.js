@@ -94,7 +94,7 @@ function addressChecker(str) {
 }
 
 function zipChecker(str) {
-    let pattern = /^[A-Z]{1}[0-9]{1}[A-Z]{1}[0-9]{1}[A-Z]{1}[0-9]{1}$/
+    let pattern = /^[A-Za-z]{1}[0-9]{1}[A-Za-z]{1}[0-9]{1}[A-Za-z]{1}[0-9]{1}$/
     if ( pattern.test(str) == false ) {
         return false;
     }
