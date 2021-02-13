@@ -1149,4 +1149,8 @@ input:not([type="checkbox"]):not([type="submit"]).is-invalid {
   background-color: white;
   padding: 1rem;
 }
+
+.logo {
+  max-width: 64px;
+}
 /*# sourceMappingURL=main.css.map */
