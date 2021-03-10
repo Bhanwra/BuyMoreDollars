@@ -18,12 +18,6 @@ export default class Input extends Component {
 
     render() {
 
-
-        setTimeout(() => {
-            console.log("Setting invalid")
-            this.isInvalid()
-        }, 1000)
-
         return(
             <div className="input-group">
                 <label>{ this.props.label }</label>
