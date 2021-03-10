@@ -1,0 +1,41 @@
+import './assets/css/main.min.css';
+import Button from './components/Button';
+import Column from './components/Column';
+import Container from './components/Container';
+import Input from './components/Input';
+import Row from './components/Row';
+
+function App() {
+
+  function formSubmit(event) {
+    event.preventDefault()
+  }
+
+  return (
+    <main className="wrapper">
+      <Container className="width-100 background-white shadow">
+        <form id="form" onSubmit={formSubmit}>
+          <Row>
+            <Column width="12">
+              <Input id="name" placeholder="Enter full name" label="Name" errorMessage="Invalid name" />
+            </Column>
+            <Column width="12">
+              <Input id="dob" placeholder="Enter date of birth" label="Date of Birth" errorMessage="Invalid date" />
+            </Column>
+            <Column width="12">
+              <Input id="phone" placeholder="Enter phone" label="Phone Number" errorMessage="Invalid phone number" />
+            </Column>
+            <Column width="12">
+              <Input id="address" placeholder="Enter address" label="Address" errorMessage="Invalid address" />
+            </Column>
+            <Column width="12">
+              <Button label="Submit" className="btn-block" type="submit" />
+            </Column>
+          </Row>
+        </form>
+      </Container>
+    </main>
+  );
+}
+
+export default App;

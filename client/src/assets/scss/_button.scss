@@ -1,0 +1,28 @@
+.btn {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    background-color: $color-primary;
+    border: $defaultBorderStyle $defaultBorderWidth $color-primary;
+    cursor: pointer;
+    letter-spacing: 3px;
+    color: $color-white;
+
+    @extend #defaultTransition;
+
+    &.btn-lg {
+        font-size: 1rem;
+        padding: 0.75rem 3rem;
+        max-width: 100%;
+    }
+
+    &.btn-block {
+        display: block;
+        width: 100%;
+    }
+
+    &:hover, &:focus {
+        background-color: $color-primary !important;
+        color: $color-light;
+    }
+}

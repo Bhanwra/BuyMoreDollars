@@ -1,0 +1,11 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+
+    @for $var from 1 through $gridSize {
+        >.col-#{$var} {
+            padding: $gutter * 0.5;
+            width: calc(#{$var} / #{$gridSize} * 100%);
+        }
+    }
+}
