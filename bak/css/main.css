@@ -61,6 +61,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 html {
+  background-image: -webkit-gradient(linear, left bottom, right top, from(#5ab1bb), color-stop(#5ab7b5), color-stop(#63bdab), color-stop(#72c29f), color-stop(#86c592), color-stop(#95c98b), color-stop(#a5cc84), color-stop(#b7ce7d), color-stop(#c6d279), color-stop(#d5d676), color-stop(#e6da74), to(#f7dd72));
+  background-image: linear-gradient(to right top, #5ab1bb, #5ab7b5, #63bdab, #72c29f, #86c592, #95c98b, #a5cc84, #b7ce7d, #c6d279, #d5d676, #e6da74, #f7dd72);
   background-color: ghostwhite;
 }
 
