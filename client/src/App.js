@@ -43,12 +43,12 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route exact path="/">
-              {
+              {/* {
                 ( isLoggedIn ) ? 
                 <Home /> :
                 <Login setLoggedIn={setLoggedIn} />
-              }
-              {/* <Home /> */}
+              } */}
+              <Home />
             </Route>
             <Route path="/login">
               <Login setLoggedIn={setLoggedIn} />
