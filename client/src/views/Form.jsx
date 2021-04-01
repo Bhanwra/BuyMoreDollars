@@ -23,22 +23,22 @@ const Form = (props) => {
             <form id="form" onSubmit={formSubmit}>
                 <Row>
                     <Column width="12">
-                        <Input id="name" placeholder="Enter full name" label="Name" errorMessage="Invalid name" type="name" />
+                        <Input id="name" placeholder="Enter full name" label="Name" errorMessage="Invalid name" validation="name" />
                     </Column>
                     <Column width="12">
-                        <Input id="dob" placeholder="Enter date of birth" label="Date of Birth" errorMessage="Invalid date" type="date" />
+                        <Input id="dob" placeholder="Enter date of birth" label="Date of Birth" errorMessage="Invalid date" validation="date" />
                     </Column>
                     <Column width="12">
-                        <Input id="phone" placeholder="Enter phone" label="Phone Number" errorMessage="Invalid phone number" type="phone" />
+                        <Input id="phone" placeholder="Enter phone" label="Phone Number" errorMessage="Invalid phone number" validation="phone" />
                     </Column>
                     <Column width="12">
-                        <Input id="address" placeholder="Enter address" label="Address" errorMessage="Invalid address" type="address" />
+                        <Input id="address" placeholder="Enter address" label="Address" errorMessage="Invalid address" validation="address" />
                     </Column>
                     <Column width="12">
-                        <Input id="zip" placeholder="Enter ZIP" label="Zip" errorMessage="Invalid zip" type="zip" />
+                        <Input id="zip" placeholder="Enter ZIP" label="Zip" errorMessage="Invalid zip" validation="zip" />
                     </Column>
                     <Column width="12">
-                        <Button label="Submit" className="btn-block" type="submit" />
+                        <Button label="Submit" className="btn-block" validation="submit" />
                     </Column>
 
                 </Row>
