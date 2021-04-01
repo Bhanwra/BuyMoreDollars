@@ -3,3 +3,22 @@
 * {
     font-family: 'Quicksand', sans-serif;
 }
+
+.terms {
+    max-height: 65vh;
+    overflow-y: auto;
+}
+
+.terms::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.terms::-webkit-scrollbar-track {
+    background-color: #ebe7e7;
+    border-radius: 2rem;
+}
+
+.terms::-webkit-scrollbar-thumb {
+    background-color: #39603c;
+    border-radius: 2rem;
+}

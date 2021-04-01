@@ -57,7 +57,7 @@ const Game = (props) => {
             </div>
 
             <div className="p-2 text-center">
-                <Link to="/">
+                <Link to="/terms">
                     <span className="text-sm">Terms &amp; Conditions</span>
                 </Link>
             </div>

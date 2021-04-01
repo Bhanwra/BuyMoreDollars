@@ -9,6 +9,7 @@ import Game from './views/Game';
 import Home from './views/Home';
 import Login from './views/Login';
 import Register from './views/Register';
+import Terms from './views/Terms';
 
 
 function App() {
@@ -39,14 +40,14 @@ function App() {
   }
 
   const home = ( isLoggedIn ) ? <Redirect to="/game" /> : <Home />
-  const game = ( !isLoggedIn ) ? <Redirect to="/" /> : <Game />
+  const game = ( !isLoggedIn ) ? <Home /> : <Game />
+  const terms = ( !isLoggedIn ) ? <Home /> : <Terms />
 
   return (
     <main className="wrapper">
       <div className="w-full bg-white shadow-md min-h-screen">
         <Header user={getUser} isLoggedIn={isLoggedIn} logoutAction={logout} />
         <BrowserRouter>
-              
           <Switch>
             <Route exact path="/">
               { home }
@@ -59,6 +60,9 @@ function App() {
             </Route>
             <Route path="/game">
               { game }
+            </Route>
+            <Route path="/terms">
+              { terms }
             </Route>
             <Route path="*">
               <Login setLoggedIn={setLoggedIn} setUser={setUser} />
