@@ -40,7 +40,7 @@ function App() {
           }}>Logout</a>
         ) : ''}
       </div>
-      <div className="w-full bg-white shadow-md h-screen">
+      <div className="w-full bg-white shadow-md min-h-screen">
         <BrowserRouter>
           <Switch>
             <Route exact path="/">

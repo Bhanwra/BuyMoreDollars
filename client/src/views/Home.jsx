@@ -1,4 +1,4 @@
-import Logo from '../assets/images/Logo.png';
+import Logo from '../assets/images/logo.png';
 const Home = (props) => {
 
     return (

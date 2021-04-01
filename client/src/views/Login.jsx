@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useHistory } from "react-router"
+import { Link } from "react-router-dom"
 
 import logoIcon from '../assets/images/logo.png'
 
@@ -54,6 +55,10 @@ const Login = (props) => {
                     </div>
                     <div className="col-span-2 input-group mt-5">
                         <button type="submit" className="w-full">Login</button>
+                        <p className="text-center my-4">- or -</p>
+                        <Link to="/register">
+                            <button type="submit" className="w-full">Create An Account</button>
+                        </Link>
                     </div>
                 </div>
             </form>
