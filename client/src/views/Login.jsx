@@ -45,15 +45,15 @@ const Login = (props) => {
 
             <form onSubmit={promptLogin}>
                 <div className="grid grid-cols-2">
-                    <div className="col-span-2 input-group">
+                    <div className="col-span-2 input-group mt-10">
                         <label htmlFor="email">Email</label>
                         <input type="email" value={getEmail} onChange={(e) => {setEmail(e.target.value)}} required />
                     </div>
-                    <div className="col-span-2 input-group">
+                    <div className="col-span-2 input-group mt-10">
                         <label htmlFor="password">Password</label>
                         <input type="password" value={getPassword} onChange={(e) => {setPassword(e.target.value)}} required />
                     </div>
-                    <div className="col-span-2 input-group mt-5">
+                    <div className="col-span-2 input-group mt-20">
                         <button type="submit" className="w-full">Login</button>
                         <p className="text-center my-4">- or -</p>
                         <Link to="/register">
