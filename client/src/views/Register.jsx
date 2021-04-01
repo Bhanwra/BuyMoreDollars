@@ -1,10 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCheck } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import axios from "axios"
 import { useState } from "react"
-
-import logo from './../assets/images/logo.png'
 import { Link } from "react-router-dom"
+import logo from './../assets/images/logo.png'
+
 
 const Register = (props) => {
 
@@ -46,7 +46,7 @@ const Register = (props) => {
         <>
             <form onSubmit={submitForm} className="p-4 grid grid-cols-2 gap-4">
                 <div className="col-span-2 my-6">
-                    <Link to="/"><img src={logo} className="w-24 m-auto" /></Link>
+                    <Link to="/"><img src={logo} className="logo" /></Link>
                     <p className="text-center">Sign up to earn a chance at winning <strong className="block">10,000 BuyMore Dollars</strong></p>
                 </div>
                 <h3>Personal Information</h3>
