@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 // import './assets/css/main.min.css';
+import './App.css';
 import './index.css';
 import Home from './views/Home';
 import Login from './views/Login';
@@ -38,7 +39,7 @@ function App() {
           }}>Logout</a>
         ) : ''}
       </div>
-      <div className="w-full bg-white shadow-md">
+      <div className="w-full bg-white shadow-md h-screen">
         <BrowserRouter>
           <Switch>
             <Route exact path="/">

@@ -11,7 +11,7 @@
   }
 
   .wrapper {
-    @apply md:max-w-md m-auto;
+    @apply md:max-w-md m-auto h-screen;
   }
 
   .input-group {

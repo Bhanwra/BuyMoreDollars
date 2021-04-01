@@ -2,6 +2,8 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useHistory } from "react-router"
 
+import logoIcon from '../assets/images/logo.png'
+
 const Login = (props) => {
 
     const [getEmail, setEmail] = useState('')
@@ -31,21 +33,30 @@ const Login = (props) => {
     }
 
     return(
-        <form onSubmit={promptLogin}>
-            <div className="grid grid-cols-2">
-                <div className="col-span-2 input-group">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" value={getEmail} onChange={(e) => {setEmail(e.target.value)}} required />
-                </div>
-                <div className="col-span-2 input-group">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" value={getPassword} onChange={(e) => {setPassword(e.target.value)}} required />
-                </div>
-                <div className="col-span-2 input-group">
-                    <button type="submit">Login</button>
-                </div>
+        <main className="px-3 py-8 flex flex-col justify-between h-full">
+            <div>
+                <h2 className="text-4xl font-bold">Welcome</h2>
+                <p>Sign in to continue</p>
             </div>
-        </form>
+
+            <img src={logoIcon} className="w-2/3 text-center flex self-center my-3" />
+
+            <form onSubmit={promptLogin}>
+                <div className="grid grid-cols-2">
+                    <div className="col-span-2 input-group">
+                        <label htmlFor="email">Email</label>
+                        <input type="email" value={getEmail} onChange={(e) => {setEmail(e.target.value)}} required />
+                    </div>
+                    <div className="col-span-2 input-group">
+                        <label htmlFor="password">Password</label>
+                        <input type="password" value={getPassword} onChange={(e) => {setPassword(e.target.value)}} required />
+                    </div>
+                    <div className="col-span-2 input-group mt-5">
+                        <button type="submit" className="w-full">Login</button>
+                    </div>
+                </div>
+            </form>
+        </main>
     )
 
 }
