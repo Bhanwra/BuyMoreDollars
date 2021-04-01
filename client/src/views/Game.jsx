@@ -10,12 +10,13 @@ const Game = (props) => {
 
     useEffect(() => {
         let timer = setInterval(() => {
-            if ( timerRef.current && timeRemaining > 0 ) {
-                timeRemaining -= 0.01
-                timerRef.current.innerHTML = parseNum(timeRemaining)
+            if ( timerRef.current ) {
+                if ( timeRemaining > 0 ) {
+                    timeRemaining -= 0.01
+                    timerRef.current.innerHTML = parseNum(timeRemaining)
+                } 
             } else {
                 clearInterval(timer)
-                timerRef.current.innerHTML = parseNum(0)
             }
         }, 10)
     })

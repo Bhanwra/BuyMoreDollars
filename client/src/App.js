@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 // import './assets/css/main.min.css';
 import './App.css';
 import Header from './components/Header';
@@ -38,6 +38,9 @@ function App() {
     localStorage.removeItem("loginToken")
   }
 
+  const home = ( isLoggedIn ) ? <Redirect to="/game" /> : <Home />
+  const game = ( !isLoggedIn ) ? <Redirect to="/" /> : <Game />
+
   return (
     <main className="wrapper">
       <div className="w-full bg-white shadow-md min-h-screen">
@@ -45,22 +48,17 @@ function App() {
         <BrowserRouter>
               
           <Switch>
-              {
-                isLoggedIn && 
-                  <>
-                    <Route exact path="/">
-                      <Home />
-                    </Route>
-                    <Route path="/game">
-                      <Game />
-                    </Route>
-                  </>
-              }
+            <Route exact path="/">
+              { home }
+            </Route>
             <Route path="/login">
               <Login setLoggedIn={setLoggedIn} setUser={setUser} />
             </Route>
             <Route path="/register">
               <Register />
+            </Route>
+            <Route path="/game">
+              { game }
             </Route>
             <Route path="*">
               <Login setLoggedIn={setLoggedIn} setUser={setUser} />

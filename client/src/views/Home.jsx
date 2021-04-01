@@ -8,6 +8,7 @@ import burger from '../assets/images/burger.png';
 import cabbage from '../assets/images/raw-cabbage.png';
 import taco from '../assets/images/taco.png';
 import booth from '../assets/images/kick-o-matic.png';
+import { Link } from 'react-router-dom';
 
 const Home = (props) => {
 
@@ -52,8 +53,8 @@ const Home = (props) => {
                 </div>
 
                 <div className="w-full relative z-20 shadow-top">
-                    <button className="uppercase w-1/2 text-lg">Login</button>
-                    <button className="uppercase w-1/2 text-lg">Register</button>
+                    <Link to="/login"><button className="uppercase w-1/2 text-lg">Login</button></Link>
+                    <Link to="/register"><button className="uppercase w-1/2 text-lg">Register</button></Link>
                 </div>
             </div>
 
