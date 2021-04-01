@@ -12,6 +12,7 @@ import Register from './views/Register';
 function App() {
 
   const [isLoggedIn, setLoggedIn] = useState(false)
+  const [getUser, setUser] = useState(false)
 
   useEffect(() => {
     // verifying login token
@@ -19,9 +20,9 @@ function App() {
 
     if ( loginToken && !isLoggedIn ) {
       axios.post(process.env.REACT_APP_API_PATH + 'user/relogin', { token: loginToken }).then(response => {
-        console.log(response)
         if ( !response.data.error ) {
           setLoggedIn(true)
+          setUser(response.data.user)
         } else {
           localStorage.removeItem('loginToken')
         }
@@ -46,12 +47,11 @@ function App() {
               {
                 ( isLoggedIn ) ? 
                 <Home /> :
-                <Login setLoggedIn={setLoggedIn} />
+                <Login setLoggedIn={setLoggedIn} setUser={setUser} />
               }
-              {/* <Home /> */}
             </Route>
             <Route path="/login">
-              <Login setLoggedIn={setLoggedIn} />
+              <Login setLoggedIn={setLoggedIn} setUser={setUser} />
             </Route>
             <Route path="/register">
               <Register />
