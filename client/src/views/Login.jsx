@@ -26,6 +26,7 @@ const Login = (props) => {
                 localStorage.setItem('loginToken', response.data.token)
 
                 props.setLoggedIn(true)
+                props.setUser(response.data.user)
 
                 history.push('/')
             }
