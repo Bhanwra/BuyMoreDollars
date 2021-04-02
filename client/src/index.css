@@ -60,11 +60,11 @@
   }
 
   .game-card-back {
-    @apply bg-gray-500 rounded-sm w-full h-full shadow-md transform transition-all absolute left-0 top-0 scale-x-0 cursor-pointer;
+    @apply rounded-sm w-full h-full shadow-md transform transition-all absolute left-0 top-0 scale-x-0 cursor-pointer bg-center bg-cover;
   }
 
   .game-card-content {
-    @apply bg-green-700 rounded-sm w-full h-full shadow-md transform transition-all absolute left-0 top-0 scale-x-0 cursor-pointer;
+    @apply bg-white rounded-sm w-full h-full shadow-md transform transition-all absolute left-0 top-0 scale-x-0 cursor-pointer;
   }
 
   .game-card > input[type="checkbox"] {
