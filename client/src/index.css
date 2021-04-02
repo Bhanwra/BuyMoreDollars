@@ -79,4 +79,13 @@
     @apply scale-x-100;
   }
 
+  .p-headings {
+    @apply text-theme-colors-light font-medium w-5/12 mt-3
+  }
+
+  .user-info {
+    @apply mt-3
+  }
+
+
 }

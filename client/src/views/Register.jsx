@@ -153,7 +153,7 @@ const Register = (props) => {
                     <button type="submit" className="w-full block">Submit</button>
                 </div>
                 <div className="col-span-2 text-center">
-                    <p className="font-sm margin-bottom-1">By submitting, you confirm that you are above the age of 16. <strong>BuyMore Dollar Inc.</strong> holds the right to revoke your entry for any reason.</p>
+                    <p className="text-xs margin-bottom-1">By submitting, you confirm that you are above the age of 16. <strong>BuyMore Dollar Inc.</strong> holds the right to revoke your entry for any reason.</p>
                 </div>
             </form>
         </>

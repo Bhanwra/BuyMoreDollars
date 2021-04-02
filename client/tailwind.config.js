@@ -7,7 +7,12 @@ module.exports = {
       colors: {
         'theme-colors': {
           'dark-green': '#39603c',
-          'light-green': '#89b187'
+          'light-green': '#89b187',
+
+          'dark': '#114C1B',
+          'light': '#1A8433',
+
+          'd-gold': '#976A02'
         }
       },
       zIndex: {

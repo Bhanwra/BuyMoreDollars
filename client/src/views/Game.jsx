@@ -44,9 +44,6 @@ const Game = (props) => {
 
     return (
         <div className="flex flex-col p-4 bg-gradient-to-b from-white via-green-100 to-white">
-            <div className="w-full mb-4">
-                <img className="logo" src={logo} alt="BuyMore Dollars Logo"/>
-            </div>
 
             <div className="p-4 text-center">
                 <span className="text-green-900 font-bold p-2 text-6xl font-mono" ref={timerRef} >{ parseNum(timeRemaining) }</span>
