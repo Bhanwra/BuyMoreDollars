@@ -1,6 +1,7 @@
 import logo from './../assets/images/logo.png'
 
 const Profile = (props) => {
+    console.log(props.user)
     return (
         <>
             <main className="p-5">
@@ -17,7 +18,7 @@ const Profile = (props) => {
                 <h3 className="mt-6 mb-0">Contact Information</h3>
                 <div className="flex">
                     <div className="p-headings">Email</div>
-                    <div className="user-info">{ props.user.phone }</div>
+                    <div className="user-info">{ props.user.email }</div>
                 </div>
                 <div className="flex">
                     <div className="p-headings">Phone Number</div>

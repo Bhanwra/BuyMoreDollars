@@ -49,7 +49,9 @@ const Register = (props) => {
                     <Link to="/"><img src={logo} className="logo" /></Link>
                     <p className="text-center">Sign up to earn a chance at winning <strong className="block">10,000 BuyMore Dollars</strong></p>
                 </div>
-                <h3>Personal Information</h3>
+                <div className="col-span-2">
+                    <h3>Personal Information</h3>
+                </div>
                 <div className="col-span-2">
                     <div className="input-group">
                         <label htmlFor="name">Name</label>
@@ -135,7 +137,7 @@ const Register = (props) => {
                         <label htmlFor="checkbox1" className="checkbox-display">
                             <FontAwesomeIcon icon={faCheck} />
                         </label>
-                        <label htmlFor="checkbox1">I consent to the rules and regulations</label>
+                        <label htmlFor="checkbox1">I consent to the <Link to="/terms">rules and regulations</Link></label>
                     </div>
                 </div>
 

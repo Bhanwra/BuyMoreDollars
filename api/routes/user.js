@@ -53,11 +53,7 @@ router.post('/login', (req, res) => {
                             error: false,
                             message: "Login successful!",
                             token: token,
-                            user: {
-                                id: result.id,
-                                name: result.name,
-                                email: result.email
-                            }
+                            user: result
                         })
                     })
                 } else {
@@ -152,11 +148,7 @@ router.post('/relogin', ( req, res ) => {
             res.json({
                 error: false,
                 message: "Login successful!",
-                user: {
-                    id: result[0].id,
-                    name: result[0].name,
-                    email: result[0].email
-                }
+                user: result[0]
             })
         } else {
             res.json({

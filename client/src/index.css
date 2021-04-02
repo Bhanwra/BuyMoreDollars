@@ -6,10 +6,6 @@
 
 @layer base {
 
-  body {
-    @apply bg-gray-200;
-  }
-
   h3 {
     @apply text-xl text-theme-colors-dark-green font-bold mb-2 uppercase;
   }
