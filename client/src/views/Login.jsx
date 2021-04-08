@@ -35,13 +35,12 @@ const Login = (props) => {
     }
 
     return(
-        <main className="px-3 py-8 flex flex-col justify-between h-full">
-            <div>
-                <h2 className="text-4xl font-bold">Welcome</h2>
-                <p>Sign in to continue</p>
+        <main className="px-3 py-8 flex flex-col justify-between h-full ">
+            <div className="col-span-2 my-6">
+                <Link to="/"><img src={logoIcon} className="logo" /></Link>
+                <h2 className="text-center text-3xl font-bold mt-3  text-theme-colors-light">Welcome Back</h2>
+                <p className="text-center"><strong>10,000 BuyMore Dollars</strong> to win today!</p>
             </div>
-
-            <img src={logoIcon} className="w-2/3 text-center flex self-center my-3" />
 
             <form onSubmit={promptLogin}>
                 <div className="grid grid-cols-2">
@@ -55,10 +54,14 @@ const Login = (props) => {
                     </div>
                     <div className="col-span-2 input-group mt-20">
                         <button type="submit" className="w-full">Login</button>
-                        <p className="text-center my-4">- or -</p>
-                        <Link to="/register">
-                            <button type="submit" className="w-full">Create An Account</button>
-                        </Link>
+
+                        <div className="flex justify-center mt-5">
+                            <a href="#" className="text-sm text-theme-colors-dark">Forgot password?</a>
+                            <p className="align-middle mx-3 leading-5">•</p>
+                            <Link to="/register">
+                                <p className="text-sm text-theme-colors-dark">Don't have an account? Sign up</p>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </form>
