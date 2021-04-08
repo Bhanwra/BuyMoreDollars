@@ -41,15 +41,15 @@ function App() {
   }
 
   const home = ( isLoggedIn ) ? <Redirect to="/game" /> : <Home />
-  const game = ( !isLoggedIn ) ? <Home /> : <Game />
-  const terms = ( !isLoggedIn ) ? <Home /> : <Terms />
-  const profile = ( !isLoggedIn ) ? <Home /> : <Profile user={getUser}/>
+  const game = ( !isLoggedIn ) ? <Redirect to="/" /> : <Game />
+  const profile = ( !isLoggedIn ) ? <Redirect to="/" /> : <Profile user={getUser}/>
+
+  const header = <Header user={getUser} isLoggedIn={isLoggedIn} logoutAction={logout} />
 
   return (
     <main className="wrapper">
       <div className="w-full bg-white shadow-md min-h-screen">
         <BrowserRouter>
-        <Header user={getUser} isLoggedIn={isLoggedIn} logoutAction={logout} />
           <Switch>
             <Route exact path="/">
               { home }
@@ -61,16 +61,19 @@ function App() {
               <Register />
             </Route>
             <Route path="/game">
+              { header }
               { game }
             </Route>
             <Route path="/terms">
-              { terms }
+              { isLoggedIn && header }
+              <Terms />
             </Route>
             <Route path="/profile">
+              { header }
               { profile }
             </Route>
             <Route path="*">
-              <Login setLoggedIn={setLoggedIn} setUser={setUser} />
+              <Login setLoggedIn={setLoggedIn} user={setUser} />
             </Route>
           </Switch>
         </BrowserRouter>
