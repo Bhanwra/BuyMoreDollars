@@ -19,7 +19,7 @@ router.post('/login', (req, res) => {
                 message: "An error occured!"
             })
 
-            throw err
+            console.error(err)
         }
 
         if ( result.length > 0 ) {
@@ -33,7 +33,7 @@ router.post('/login', (req, res) => {
                         message: "An error occured [1]!"
                     })
         
-                    throw err
+                    console.log(err)
                 }
 
                 if ( same ) {
@@ -44,7 +44,7 @@ router.post('/login', (req, res) => {
                                 message: "An error occured [2]!"
                             })
                 
-                            throw err
+                            console.log(err)
                         }
 
                         connection.query('UPDATE tb_users SET ?', {login_token: token})
@@ -79,7 +79,14 @@ router.post('/register', (req, res) => {
 
     // checking for duplicate emails
     connection.query(`SELECT id FROM tb_users WHERE email = ?`, req.body.email, (err, result) => {
-        if ( err ) throw err
+        if ( err ) {
+            res.json({
+                error: true,
+                message: "An error occured!"
+            })
+            
+            console.log(err)
+        }
 
         if ( result.length > 0 ) {
             // account already exists with email
@@ -97,7 +104,7 @@ router.post('/register', (req, res) => {
                         message: "An error occured!"
                     })
                     
-                    throw err
+                    console.log(err)
                 }
 
                 connection.query(`INSERT INTO tb_users SET ?`,
@@ -147,7 +154,7 @@ router.post('/relogin', ( req, res ) => {
                 message: "An error occured!"
             })
             
-            throw err
+            console.log(err)
         }
 
         if ( result.length > 0 ) {
