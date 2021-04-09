@@ -74,7 +74,7 @@ function App() {
             </Route>
             <Route path="/profile">
               { header }
-              { win }
+              { profile }
             </Route>
             <Route path="/win">
               { header }

@@ -13,7 +13,11 @@ const Game = (props) => {
     const [gameState, setGameState] = useState({
         isPlaying: false,
         gameId: null,
-        win: false
+        win: false,
+        prize: {
+            id: null,
+            amount: 0
+        }
     })
 
     // whether the game can be played or not
@@ -22,7 +26,7 @@ const Game = (props) => {
         timeTillCanPlay: 0
     })
     
-    let totalTime = 200
+    let totalTime = 20
     let timeRemaining = totalTime
     let timeTillCanPlay = playState.timeTillCanPlay
 
@@ -39,6 +43,8 @@ const Game = (props) => {
         require('./../assets/images/taco.png')
     ]
 
+    let correctTurns = 0
+
     const timerRef = createRef()
     const progressFillRef = createRef()
     const canPlayRef = createRef()
@@ -52,7 +58,6 @@ const Game = (props) => {
             user: props.user.id
         }).then((response) => {
             if ( !response.data.error ) {
-                console.log(response.data)
                 setPlayState({
                     canPlay: response.data.canPlay,
                     timeTillCanPlay: response.data.timeTillCanPlay
@@ -108,7 +113,6 @@ const Game = (props) => {
     }
 
     const takeTurn = (index) => {
-        console.log('taking turn')
         if ( turnCache.length < 2 ) {
             turnCache.push(index)
         }
@@ -126,10 +130,18 @@ const Game = (props) => {
             // same
             document.querySelector(`#card${cardOne}`).setAttribute('disabled', true)
             document.querySelector(`#card${cardTwo}`).setAttribute('disabled', true)
+
+            correctTurns++
         } else {
+            document.querySelectorAll('.game-card').forEach(card => {
+                card.classList.add("shake")
+            })
             setTimeout(() => {
                 document.querySelector(`#card${cardOne}`).checked = false
                 document.querySelector(`#card${cardTwo}`).checked = false
+                document.querySelectorAll('.game-card').forEach(card => {
+                    card.classList.remove("shake")
+                })
             }, 500)
         }
         
@@ -170,7 +182,11 @@ const Game = (props) => {
                 setGameState({
                     ...gameState,
                     isPlaying: true,
-                    gameId: response.data.game
+                    gameId: response.data.gameId,
+                    prize: {
+                        id: response.data.prize.id,
+                        amount: response.data.prize.amount
+                    }
                 })
             }
         }).catch(err => {
@@ -179,13 +195,14 @@ const Game = (props) => {
     }
 
     const endGame = () => {
-        console.log(gameState)
         axios.post(process.env.REACT_APP_API_PATH + 'game/end', {
+            userId: props.user.id,
             gameId: gameState.gameId,
-            win: gameState.win
+            win: (correctTurns >= cardFaces.length/2) ? true : false,
+            prize: gameState.prize
         }).then( response => {
             console.log(response)
-            history.push('/profile')
+            history.push('/win')
         }).catch( err => {
             console.error(err)
         })
