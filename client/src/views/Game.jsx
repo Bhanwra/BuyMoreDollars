@@ -22,7 +22,7 @@ const Game = (props) => {
         timeTillCanPlay: 0
     })
     
-    let totalTime = 4
+    let totalTime = 200
     let timeRemaining = totalTime
     let timeTillCanPlay = playState.timeTillCanPlay
 
@@ -39,8 +39,14 @@ const Game = (props) => {
         require('./../assets/images/taco.png')
     ]
 
-    useEffect(() => {
+    const timerRef = createRef()
+    const progressFillRef = createRef()
+    const canPlayRef = createRef()
 
+    // stores the selected pair by the user to check
+    let turnCache = []
+
+    useEffect(() => {
         // verify game
         axios.post(process.env.REACT_APP_API_PATH + 'game/verify', {
             user: props.user.id
@@ -96,13 +102,38 @@ const Game = (props) => {
             }, 1000)
         }
     })
-
-    const timerRef = createRef()
-    const progressFillRef = createRef()
-    const canPlayRef = createRef()
     
     const parseNum = (num) => {
         return Number(Math.abs(num)).toFixed(2).replace('.', ':')
+    }
+
+    const takeTurn = (index) => {
+        console.log('taking turn')
+        if ( turnCache.length < 2 ) {
+            turnCache.push(index)
+        }
+        
+        if ( turnCache.length == 2 ) {
+            checkPair(turnCache[0], turnCache[1])
+        }
+    }
+
+    const checkPair = (cardOne, cardTwo) => {
+        let firstCard = document.querySelector(`#card${cardOne} ~ label.game-card-content`)
+        let secondCard = document.querySelector(`#card${cardTwo} ~ label.game-card-content`)
+
+        if ( firstCard.style.backgroundImage == secondCard.style.backgroundImage ) {
+            // same
+            document.querySelector(`#card${cardOne}`).setAttribute('disabled', true)
+            document.querySelector(`#card${cardTwo}`).setAttribute('disabled', true)
+        } else {
+            setTimeout(() => {
+                document.querySelector(`#card${cardOne}`).checked = false
+                document.querySelector(`#card${cardTwo}`).checked = false
+            }, 500)
+        }
+        
+        turnCache = []
     }
 
     const gameCards = (cards) => {
@@ -120,7 +151,7 @@ const Game = (props) => {
 
             cardObject.push(
                 <div key={`gameCard${i}`} className="col-span-1 game-card">
-                    <input type="checkbox" id={`card${i}`} />
+                    <input type="checkbox" id={`card${i}`} onChange={() => {takeTurn(i)}} />
                     <label className="game-card-back" htmlFor={`card${i}`} style={{backgroundImage: `url('${cardBackground}')`}}></label>
                     <label className="game-card-content bg-center bg-contain bg-no-repeat" htmlFor={`card${i}`}  style={{backgroundImage: `url('${thisCardFace.default}')`}}></label>
                 </div>
@@ -166,7 +197,7 @@ const Game = (props) => {
             <div className="z-20">
 
                 <div className="p-4 text-center">
-                    <span className="text-green-900 bg-white font-bold p-2 text-6xl font-mono" ref={timerRef} >{ parseNum(timeRemaining) }</span>
+                    <span className="text-green-900 bg-white font-bold p-2 text-6xl" ref={timerRef} >{ parseNum(timeRemaining) }</span>
                 </div>
 
                 <div className="grid grid-cols-2 w-full gap-1 m-auto my-2">
