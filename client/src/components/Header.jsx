@@ -3,11 +3,11 @@ import logo from './../assets/images/logo.png'
 
 const Header = (props) => {
     return (
-        <div className="w-full flex justify-between h-28 p-2  z-11">
-        <img src={logo} alt="" className=" "/>
-            <div className="flex flex-col h-full items-end justify-evenly">
+        <div className="w-full flex justify-between items-center h-28 p-2 px-5  z-11">
+        <img src={logo} alt="" className="h-full"/>
+            <div className="flex flex-col h-3/6 items-end justify-evenly">
                 { (props.user) ? (
-                    <span className="text-right">Hi, <br></br><strong className="text-theme-colors-dark cursor-pointer">
+                    <span className="text-right">Hi, <strong className="text-theme-colors-dark cursor-pointer">
                         <Link to="/profile">
                             { props.user.name }
                         </Link>

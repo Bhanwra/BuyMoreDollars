@@ -11,6 +11,7 @@ import Login from './views/Login';
 import Register from './views/Register';
 import Terms from './views/Terms';
 import Profile from './views/Profile';
+import Win from './views/Win';
 
 
 function App() {
@@ -45,11 +46,12 @@ function App() {
   const home = ( isLoggedIn ) ? <Redirect to="/game" /> : <Home />
   const game = ( !isLoggedIn ) ? <Redirect to="/" /> : <Game user={getUser} />
   const profile = ( !isLoggedIn ) ? <Redirect to="/" /> : <Profile user={getUser}/>
+  const win = ( !isLoggedIn ) ? <Redirect to="/" /> : <Win/>
 
   const header = <Header user={getUser} isLoggedIn={isLoggedIn} logoutAction={logout} />
 
   return (
-    <main className="wrapper">
+    <main className="wrapper overflow-y-auto">
       <div className="w-full bg-white shadow-md min-h-screen">
         <BrowserRouter>
           <Switch>
@@ -72,7 +74,11 @@ function App() {
             </Route>
             <Route path="/profile">
               { header }
-              { profile }
+              { win }
+            </Route>
+            <Route path="/win">
+              { header }
+              { win }
             </Route>
             <Route path="*">
               <Login setLoggedIn={setLoggedIn} user={setUser} />

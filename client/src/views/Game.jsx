@@ -166,7 +166,7 @@ const Game = (props) => {
             <div className="z-20">
 
                 <div className="p-4 text-center">
-                    <span className="text-green-900 bg-white font-bold p-2 text-6xl font-mono" ref={timerRef} >{ parseNum(timeRemaining) }</span>
+                    <span className="text-green-900 bg-white font-bold p-2 text-6xl " ref={timerRef} >{ parseNum(timeRemaining) }</span>
                 </div>
 
                 <div className="grid grid-cols-2 w-full gap-1 m-auto my-2">
@@ -175,24 +175,28 @@ const Game = (props) => {
 
                 <div className="p-2 text-center">
                     <Link to="/terms">
-                        <span className="text-sm">Terms &amp; Conditions</span>
+                        <span className="text-sm text-theme-colors-dark">Terms &amp; Conditions</span>
                     </Link>
                 </div>
 
                 {!gameState.isPlaying && 
-                    <div className="absolute bg-black bg-opacity-75 left-0 top-0 w-full h-full flex justify-center items-center p-4">
+                    <div className="absolute left-0 top-0 w-full h-full flex justify-center items-center p-4">
+
+                    <div className="absolute bg-gradient-to-t from-gray-900 via-gray-500 to-white opacity-70 left-0 top-0 w-full h-full"></div>
 
                             {playState.canPlay ? 
                             (
-                                <div className="bg-white shadow-md p-2">
-                                    <p>Click to start the game yo<br/>Remember, you start, you refresh, you lose. k?</p>
+                                <div className=" z-50 bg-white shadow-md p-2 flex flex-col items-center py-3 w-11/12">
+                                    <h3 className="font-bold text-lg">Instructions</h3>
+                                    <p>Find all the pairs before the end of the timer.</p>
+                                    <p className="text-sm text-theme-colors-light mt-3">Once you start the game, you can't pause.</p>
         
-                                    <button onClick={startGame}>Start</button>
+                                    <button className="mt-3" onClick={startGame}>Start</button>
                                 </div>
                             ) : (
-                                <div className="bg-white shadow-md p-2">
-                                    <p>Something about waiting till you get your chance to play again</p>
-                                    <p>You play in <span ref={canPlayRef}>{timeTillCanPlay}</span> seconds</p>
+                                <div className=" z-50 bg-white shadow-md p-2 text-center py-3 w-11/12">
+                                    <p className="font-bold text-theme-colors-light mb-3"><span className="text-5xl" ref={canPlayRef}>{timeTillCanPlay}</span></p>
+                                    <p>until next game!</p>
                                 </div>
                             )}
 
