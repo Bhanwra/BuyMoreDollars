@@ -25,6 +25,14 @@ const Game = (props) => {
         canPlay: false,
         timeTillCanPlay: 0
     })
+
+    // challenge after win screen
+    const [challengeScreen, setChallengeScreen] = useState({
+        show: false,
+        challenge: null,
+        answer: 0,
+        given: 0
+    })
     
     let totalTime = 20
     let timeRemaining = totalTime
@@ -43,6 +51,7 @@ const Game = (props) => {
         require('./../assets/images/taco.png')
     ]
 
+    let totalCards = cardFaces.length
     let correctTurns = 0
 
     const timerRef = createRef()
@@ -69,7 +78,7 @@ const Game = (props) => {
     }, [])
 
     useEffect(() => {
-        if ( gameState.isPlaying ) {
+        if ( gameState.isPlaying && !challengeScreen.show ) {
             let timer = setInterval(() => {
                 if ( timerRef.current ) {
                     if ( timeRemaining > 0.0001 ) {
@@ -90,7 +99,7 @@ const Game = (props) => {
             }, 10)
         }
 
-        if ( !playState.canPlay ) {
+        if ( !playState.canPlay && !challengeScreen.show ) {
             let timerCanPlay = setInterval(() => {
                 if ( canPlayRef.current ) {
                     if ( timeTillCanPlay > 0.0001 ) {
@@ -146,6 +155,10 @@ const Game = (props) => {
         }
         
         turnCache = []
+
+        if ( correctTurns >= totalCards/2 ) {
+            timeRemaining = 0
+        }
     }
 
     const gameCards = (cards) => {
@@ -195,14 +208,33 @@ const Game = (props) => {
     }
 
     const endGame = () => {
+        if ( correctTurns >= totalCards/2 ) {
+            let challengeEquationFacets = [
+                (20 + Math.floor(Math.random() * 30)),
+                Math.floor(Math.random() * 20),
+                Math.floor(Math.random() * 20)
+            ]
+            setChallengeScreen({
+                ...challengeScreen,
+                show: true,
+                challenge: `(${challengeEquationFacets[0]} + ${challengeEquationFacets[1]}) - ${challengeEquationFacets[2]}`,
+                answer: (challengeEquationFacets[0] + challengeEquationFacets[1]) - challengeEquationFacets[2]
+            })
+        }
+    }
+
+    const skillCheck = (bool) => {
         axios.post(process.env.REACT_APP_API_PATH + 'game/end', {
             userId: props.user.id,
             gameId: gameState.gameId,
-            win: (correctTurns >= cardFaces.length/2) ? true : false,
+            win: bool,
             prize: gameState.prize
         }).then( response => {
-            console.log(response)
-            history.push('/win')
+            if ( bool ) {
+                history.push('/win')
+            } else {
+                history.push('/lost')
+            }
         }).catch( err => {
             console.error(err)
         })
@@ -248,6 +280,32 @@ const Game = (props) => {
                                 </div>
                             )}
 
+                    </div>
+                }
+
+                {challengeScreen.show && 
+                    <div className="z-50 absolute left-0 top-0 w-full h-full bg-white flex flex-col items-center">
+                        <p className="text-2xl font-bold text-theme-colors-light text-center mt-5">One more step</p>
+                        <p className="text-center mt-1 mb-5">Find the answer to this equation to <br></br>receive your prize.</p>
+
+                        <div className="bg-gray-100 w-10/12 p-3">
+                            <p className="text-center font-bold text-xl">{challengeScreen.challenge}</p>
+
+                            <form onSubmit={(e) => {
+                                e.preventDefault()
+
+                                skillCheck(challengeScreen.answer == challengeScreen.given)
+
+                            }} className="w-10/12 flex justify-items-center m-auto mt-3">
+                                <input type="number" value={challengeScreen.given} required={true} onChange={(e) => {
+                                    setChallengeScreen({
+                                        ...challengeScreen,
+                                        given: e.target.value
+                                    })
+                                }} />
+                                <button type="submit" className="w-4/12 block ml-3">Answer</button>
+                            </form>
+                        </div>
                     </div>
                 }
             </div>

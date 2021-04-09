@@ -5,18 +5,6 @@ const Win = (props) => {
 
     return (
         <main className="mt-5 flex flex-col items-center">
-            <p className="text-2xl font-bold text-theme-colors-light text-center mt-5">One more step</p>
-            <p className="text-center mt-1 mb-5">Find the answer to this equation to <br></br>receive your prize.</p>
-
-            <div className="bg-gray-100 w-10/12 p-3 mb-5">
-                <p className="text-center font-bold text-xl">(2*6) – (20/4)</p>
-
-                <div className="w-10/12 flex justify-items-center m-auto mt-3">
-                    <input type="number"/>
-                    <button type="submit" className="w-4/12 block ml-3">Answer</button>
-                </div>
-            </div>
-
 
             {/* If answered correctly */}
             <div className="my-5 p-3 w-10/12 bg-theme-colors-l-gold shadow-lg">
