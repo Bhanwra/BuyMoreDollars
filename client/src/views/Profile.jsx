@@ -69,7 +69,7 @@ const Profile = (props) => {
                 </div>
 
                 <div className="flex mt-6">
-                    <button className="w-1/2 block mx-1">Prizes Hisotry</button>
+                    <button className="w-1/2 block mx-1">Prizes History</button>
                     <button type="submit" className="w-1/2 block mx-1">Save changes</button>
                 </div>
             </main>
