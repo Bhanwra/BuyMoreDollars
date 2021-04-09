@@ -54,28 +54,80 @@ router.post('/verify', (req, res) => {
     })
 })
 
+router.get('/test', (req, res) => {
+    connection.query('SELECT * FROM `tb_prizes` WHERE `prize_count` - `on_hold` > 0 ORDER BY RAND()', (err, result) => {
+        res.send(result)
+    })
+})
+
 router.post('/start', (req, res) => {
-    connection.query('INSERT INTO `tb_game_log` (`user_id`, `started_on`) VALUES (?, NOW());', [req.body.user.id], (err, result) => {
-        if ( err ) {
-            console.error(err)
+    connection.query('SELECT * FROM `tb_prizes` WHERE `prize_count` - `on_hold` > 0 ORDER BY RAND() LIMIT 1', (prizeErr, prizeResult) => {
+        if ( prizeErr ) {
+            console.error(prizeErr)
 
             res.json({
                 error: true,
-                message: 'Could not start the game'
+                message: 'Error during prize generation'
             })
         }
 
-        res.json({
-            error: false,
-            game: result.insertId
-        })
+        if ( prizeResult.length > 0 ) {
+            connection.query('INSERT INTO `tb_game_log` (`user_id`, `started_on`, `prize_id`) VALUES (?, NOW(), ?);', [req.body.user.id, prizeResult[0].id], (err, result) => {
+                if ( err ) {
+                    console.error(err)
+        
+                    res.json({
+                        error: true,
+                        message: 'Could not start the game'
+                    })
+                }
+
+                connection.query('UPDATE `tb_prizes` SET `on_hold` = `on_hold` + 1 WHERE `id` = ?', [prizeResult[0].id])
+
+                res.json({
+                    error: false,
+                    gameId: result.insertId,
+                    prize: {
+                        id: prizeResult[0].id,
+                        amount: prizeResult[0].prize_amount
+                    }
+                })
+            })
+        } else {
+            res.json({
+                error: true,
+                message: 'No more prizes left'
+            })
+        }
     })
+    
 })
 
 router.post('/end', (req, res) => {
     // connection.query('UPDATE `tb_game_log` SET `')
+    console.log(req.body)
+    try {
+        if ( req.body.win ) {
+            // won
+            connection.query('UPDATE `tb_game_log` SET `win` = 1 WHERE `id` = ?', req.body.gameId)
+            connection.query('UPDATE `tb_users` SET `dollars` = `dollars` + ? WHERE `id` = ?', [req.body.prize.amount, req.body.userId])
+            connection.query('UPDATE `tb_prizes` SET `on_hold` = `on_hold` - 1, `prize_count` = `prize_count` - 1 WHERE `id` = ?', req.body.prize.id)
+        } else {
+            // lost
+            connection.query('UPDATE `tb_prizes` SET `on_hold` = `on_hold` - 1 WHERE `id` = ?', req.body.prize.id)
+        }
 
-    res.send('Wait')
+        res.json({
+            error: false,
+            message: "Db updated properly"
+        })
+    } catch ( ex ) {
+        console.error(ex)
+        res.json({
+            error: true,
+            message: "An error occured!"
+        })
+    }
 })
 
 module.exports = router
