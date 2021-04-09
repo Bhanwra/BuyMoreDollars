@@ -24,15 +24,15 @@ const Home = (props) => {
             <div className="h-screen relative z-20 flex flex-col justify-between">
                 <div className="h-full flex flex-col justify-center p-5 justify-between">
                     <div className="w-full flex justify-end">
-                        <img src={logo} alt="" className="w-6/12 float-right"/>
+                        <img src={logo} alt="" className="w-5/12 float-right"/>
                     </div>
                     <div>
                         <h3 className="w-7/12">IN PARTNERSHIP WITH</h3>
                         <div className="partnersIcon flex">
-                            <img src={burger} alt="" className="w-2/12 mr-3"/>
-                            <img src={cabbage} alt="" className="w-2/12 mr-3"/>
-                            <img src={taco} alt="" className="w-2/12 mr-3"/>
-                            <img src={booth} alt="" className="w-2/12 mr-3"/>
+                            <img src={burger} alt="" className="bg-white rounded-full pt-1 w-2/12 mr-3"/>
+                            <img src={cabbage} alt="" className="bg-white rounded-full w-2/12 mr-3"/>
+                            <img src={taco} alt="" className="bg-white rounded-full p-2 w-2/12 mr-3"/>
+                            <img src={booth} alt="" className="bg-white rounded-full p-1 w-2/12 mr-3"/>
                         </div>
                     </div>
 
