@@ -32,6 +32,8 @@ function App() {
         }
       }).catch(err => { if ( err ) console.error(err) })
     }
+
+    console.log(`Logged In: ${isLoggedIn}`)
   })
 
   const logout = () => {
@@ -41,7 +43,7 @@ function App() {
   }
 
   const home = ( isLoggedIn ) ? <Redirect to="/game" /> : <Home />
-  const game = ( !isLoggedIn ) ? <Redirect to="/" /> : <Game />
+  const game = ( !isLoggedIn ) ? <Redirect to="/" /> : <Game user={getUser} />
   const profile = ( !isLoggedIn ) ? <Redirect to="/" /> : <Profile user={getUser}/>
 
   const header = <Header user={getUser} isLoggedIn={isLoggedIn} logoutAction={logout} />

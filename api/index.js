@@ -15,6 +15,8 @@ app.get('/', (req, res) => {
 
 app.use('/user', require('./routes/user'))
 
+app.use('/game', require('./routes/game'))
+
 app.listen(port, () => {
     console.log(`App hosted @ http://localhost:${port}`)
 })

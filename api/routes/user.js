@@ -113,7 +113,14 @@ router.post('/register', (req, res) => {
                             email: req.body.email,
                             password: string
                         }, (err, result) => {
-                            if ( err ) throw err
+                            if ( err ) {
+                                res.json({
+                                    error: true,
+                                    message: "Failed to create an account. Contact an admin about it."
+                                })
+                                
+                                console.log(`An error occured while creating the account`)
+                            }
             
                             res.json({
                                 error: false,
