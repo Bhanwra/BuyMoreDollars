@@ -47,8 +47,6 @@ function App() {
   const home = ( isLoggedIn ) ? <Redirect to="/game" /> : <Home />
   const game = ( !isLoggedIn ) ? <Redirect to="/" /> : <Game user={getUser} />
   const profile = ( !isLoggedIn ) ? <Redirect to="/" /> : <Profile user={getUser}/>
-  const lost =  <Lost/>
-  const win =  <Win/>
 
   const header = <Header user={getUser} isLoggedIn={isLoggedIn} logoutAction={logout} />
 
@@ -80,11 +78,11 @@ function App() {
             </Route>
             <Route path="/win">
               { header }
-              { win }
+              <Win/>
             </Route>
             <Route path="/lost">
               { header }
-              { lost }
+              <Lost/>
             </Route>
             <Route path="*">
               <Login setLoggedIn={setLoggedIn} user={setUser} />
