@@ -8,7 +8,7 @@ const Win = (props) => {
             <p className="text-2xl font-bold text-theme-colors-light text-center mt-5">One more step</p>
             <p className="text-center mt-1 mb-5">Find the answer to this equation to <br></br>receive your prize.</p>
 
-            <div className="bg-gray-100 w-10/12 p-3">
+            <div className="bg-gray-100 w-10/12 p-3 mb-5">
                 <p className="text-center font-bold text-xl">(2*6) – (20/4)</p>
 
                 <div className="w-10/12 flex justify-items-center m-auto mt-3">
@@ -19,10 +19,10 @@ const Win = (props) => {
 
 
             {/* If answered correctly */}
-            <div className="my-5 p-3 w-10/12 bg-gray-200">
-                <h2 className=" text-center text-3xl font-bold text-theme-colors-light">Congratulations!</h2>
-                <p className="text-center mt-2">Your prize is on it's way.</p>
-                <p className="text-center mt-2 text-sm text-theme-colors-d-gold">It will be added to your account in 6-8 weeks</p>
+            <div className="my-5 p-3 w-10/12 bg-theme-colors-l-gold shadow-lg">
+                <h2 className=" text-center text-3xl font-bold text-theme-colors-dark">Congratulations!</h2>
+                <p className="text-center mt-2 font-medium">Your prize is on it's way.</p>
+                <p className="text-center mt-2 text-sm"><span className="font-bold">100 BuyMore Dollars</span> will be added <br></br>to your account in 6-8 weeks</p>
 
             </div>
 

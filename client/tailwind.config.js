@@ -12,7 +12,8 @@ module.exports = {
           'dark': '#114C1B',
           'light': '#1A8433',
 
-          'd-gold': '#976A02'
+          'd-gold': '#976A02',
+          'l-gold': '#FDB615'
         }
       },
       zIndex: {
