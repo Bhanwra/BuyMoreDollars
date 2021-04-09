@@ -180,7 +180,7 @@ const Game = (props) => {
                 </div>
 
                 {!gameState.isPlaying && 
-                    <div className="fixed bg-black bg-opacity-75 left-0 top-0 w-full h-full flex justify-center items-center p-4">
+                    <div className="absolute bg-black bg-opacity-75 left-0 top-0 w-full h-full flex justify-center items-center p-4">
 
                             {playState.canPlay ? 
                             (
