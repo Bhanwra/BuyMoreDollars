@@ -49,7 +49,7 @@ function App() {
   const header = <Header user={getUser} isLoggedIn={isLoggedIn} logoutAction={logout} />
 
   return (
-    <main className="wrapper">
+    <main className="wrapper overflow-y-auto">
       <div className="w-full bg-white shadow-md min-h-screen">
         <BrowserRouter>
           <Switch>
