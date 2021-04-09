@@ -11,6 +11,7 @@ import Login from './views/Login';
 import Register from './views/Register';
 import Terms from './views/Terms';
 import Profile from './views/Profile';
+import Lost from './views/Lost';
 import Win from './views/Win';
 
 
@@ -46,7 +47,8 @@ function App() {
   const home = ( isLoggedIn ) ? <Redirect to="/game" /> : <Home />
   const game = ( !isLoggedIn ) ? <Redirect to="/" /> : <Game user={getUser} />
   const profile = ( !isLoggedIn ) ? <Redirect to="/" /> : <Profile user={getUser}/>
-  const win = ( !isLoggedIn ) ? <Redirect to="/" /> : <Win/>
+  const lost =  <Lost/>
+  const win =  <Win/>
 
   const header = <Header user={getUser} isLoggedIn={isLoggedIn} logoutAction={logout} />
 
@@ -74,11 +76,15 @@ function App() {
             </Route>
             <Route path="/profile">
               { header }
-              { win }
+              { profile }
             </Route>
             <Route path="/win">
               { header }
               { win }
+            </Route>
+            <Route path="/lost">
+              { header }
+              { lost }
             </Route>
             <Route path="*">
               <Login setLoggedIn={setLoggedIn} user={setUser} />

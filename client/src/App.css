@@ -37,3 +37,19 @@ body::before {
     background-color: #39603c;
     border-radius: 2rem;
 }
+
+.game_result {
+    text-align: center;
+    animation: shake 0.7s ease-in-out 0.7s infinite alternate;
+}
+
+@keyframes shake {
+    from {
+        transform: rotate(3deg);
+    }
+
+    to {
+        transform-origin: center center;
+        transform: rotate(-3deg);
+    }
+}
