@@ -34,8 +34,6 @@ function App() {
         }
       }).catch(err => { if ( err ) console.error(err) })
     }
-
-    console.log(`Logged In: ${isLoggedIn}`)
   })
 
   const logout = () => {
