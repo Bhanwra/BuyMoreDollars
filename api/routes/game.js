@@ -10,6 +10,8 @@ const timeGate = {
     loss: 1 * timeDelta
 }
 
+const payOutIn = (2*60*1000);
+
 router.post('/verify', (req, res) => {
     connection.query('SELECT * FROM `tb_game_log` WHERE `user_id` = ? ORDER BY `started_on` DESC LIMIT 1', [req.body.user], (err, result) => {
         if ( err ) {
@@ -55,8 +57,9 @@ router.post('/verify', (req, res) => {
 })
 
 router.get('/test', (req, res) => {
-    connection.query('SELECT * FROM `tb_prizes` WHERE `prize_count` - `on_hold` > 0 ORDER BY RAND()', (err, result) => {
-        res.send(result)
+    let query = 'SELECT * FROM `tb_prizes` WHERE `prize_count` - `on_hold` > 0 ORDER BY RAND() LIMIT 1'
+    connection.query(query, (err, result) => {
+        res.json(result)
     })
 })
 
@@ -110,8 +113,10 @@ router.post('/end', (req, res) => {
         if ( req.body.win ) {
             // won
             connection.query('UPDATE `tb_game_log` SET `win` = 1 WHERE `id` = ?', req.body.gameId)
-            connection.query('UPDATE `tb_users` SET `dollars` = `dollars` + ? WHERE `id` = ?', [req.body.prize.amount, req.body.userId])
+            // connection.query('UPDATE `tb_users` SET `dollars` = `dollars` + ? WHERE `id` = ?', [req.body.prize.amount, req.body.userId])
             connection.query('UPDATE `tb_prizes` SET `on_hold` = `on_hold` - 1, `prize_count` = `prize_count` - 1 WHERE `id` = ?', req.body.prize.id)
+
+            connection.query('INSERT INTO `tb_payouts` (`user_id`, `game_id`, `amount`, `payout_on`) VALUES (?, ?, ?, ?)', [req.body.userId, req.body.gameId, req.body.prize.amount, new Date(Date.now() + payOutIn)])
         } else {
             // lost
             connection.query('UPDATE `tb_prizes` SET `on_hold` = `on_hold` - 1 WHERE `id` = ?', req.body.prize.id)
@@ -128,6 +133,23 @@ router.post('/end', (req, res) => {
             message: "An error occured!"
         })
     }
+})
+
+router.post('/history', (req, res) => {
+
+    connection.query('SELECT * FROM `tb_payouts` INNER JOIN `tb_game_log` ON `tb_payouts`.`game_id` = `tb_game_log`.`id` WHERE `tb_payouts`.`user_id` = ? ORDER BY `payout_on` ASC', req.body.userId, (err, result) => {
+        if ( err ) {
+            res.json({
+                error: true,
+                message: "Error while fetching history"
+            })
+        }
+
+        res.json({
+            error: false,
+            history: result
+        })
+    })
 })
 
 module.exports = router

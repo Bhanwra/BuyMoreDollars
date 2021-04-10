@@ -83,5 +83,8 @@
     @apply mt-3
   }
 
+  p.error {
+    @apply text-xs font-bold text-red-600;
+  }
 
 }

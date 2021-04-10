@@ -13,6 +13,7 @@ import Terms from './views/Terms';
 import Profile from './views/Profile';
 import Lost from './views/Lost';
 import Win from './views/Win';
+import History from './views/History';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
   const home = ( isLoggedIn ) ? <Redirect to="/game" /> : <Home />
   const game = ( !isLoggedIn ) ? <Redirect to="/" /> : <Game user={getUser} />
   const profile = ( !isLoggedIn ) ? <Redirect to="/" /> : <Profile user={getUser}/>
+  const history = ( !isLoggedIn ) ? <Redirect to="/" /> : <History user={getUser} />
 
   const header = <Header user={getUser} isLoggedIn={isLoggedIn} logoutAction={logout} />
 
@@ -81,6 +83,10 @@ function App() {
             <Route path="/lost">
               { header }
               <Lost/>
+            </Route>
+            <Route path="/history">
+              { header }
+              { history }
             </Route>
             <Route path="*">
               <Login setLoggedIn={setLoggedIn} user={setUser} />

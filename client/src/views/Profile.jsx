@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import logo from './../assets/images/logo.png'
 
 const Profile = (props) => {
@@ -44,6 +45,10 @@ const Profile = (props) => {
                     <div className="p-headings">Country</div>
                     <div className="user-info">{ props.user.country }</div>
                 </div>
+                <div className="flex">
+                    <div className="p-headings">BM$</div>
+                    <div className="user-info">{ props.user.dollars }</div>
+                </div>
 
                 <h3 className="mt-6 mb-0">Change Password</h3>
                 <div className="flex">
@@ -69,7 +74,7 @@ const Profile = (props) => {
                 </div>
 
                 <div className="flex mt-6">
-                    <button className="w-1/2 block mx-1">Prizes History</button>
+                    <Link to="/history" className="w-1/2 block mx-1"><button>Prizes History</button></Link>
                     <button type="submit" className="w-1/2 block mx-1">Save changes</button>
                 </div>
             </main>
