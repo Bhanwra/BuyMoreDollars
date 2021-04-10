@@ -152,4 +152,20 @@ router.post('/history', (req, res) => {
     })
 })
 
+router.get('/prizes', (req, res) => {
+    connection.query('SELECT * FROM `tb_prizes`', (err, result) => {
+        if ( err ) {
+            res.json({
+                error: true,
+                message: "An error occured while fetching prizes"
+            })
+        }
+
+        res.json({
+            error: false,
+            prizes: result
+        })
+    })
+})
+
 module.exports = router

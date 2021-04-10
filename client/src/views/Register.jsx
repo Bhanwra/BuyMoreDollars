@@ -91,7 +91,6 @@ const Register = (props) => {
 
         let errorCount = 0
         Object.keys(getFields).forEach(field => {
-            console.log(getFields[field].error)
             if ( getFields[field].error != "" ) {
                 errorCount++
             }

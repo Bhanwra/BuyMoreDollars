@@ -54,21 +54,21 @@ const Profile = (props) => {
                 <div className="flex">
                     <div className="p-headings">Old Password</div>                    
                     <div className="input-group">
-                        <input type="password" id="password" name="password" placeholder="Enter password" required />
+                        <input type="password" id="old_password" name="password" placeholder="Enter password" required />
                         <p className="error" id="passwordError"></p>
                     </div>
                 </div>
                 <div className="flex">
                     <div className="p-headings">New Password</div>                 
                     <div className="input-group">
-                        <input type="password" id="password" name="password" placeholder="Enter password" required />
+                        <input type="password" id="new_password" name="password" placeholder="Enter password" required />
                         <p className="error" id="passwordError"></p>
                     </div>
                 </div>
                 <div className="flex">
                     <div className="p-headings">Repeat Password</div>                 
                     <div className="input-group">
-                        <input type="password" id="password" name="password" placeholder="Enter password" required />
+                        <input type="password" id="repeat_password" name="password" placeholder="Enter password" required />
                         <p className="error" id="passwordError"></p>
                     </div>
                 </div>
