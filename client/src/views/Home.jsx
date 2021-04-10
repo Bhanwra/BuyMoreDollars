@@ -1,38 +1,16 @@
+import { Link } from 'react-router-dom';
+import burger from '../assets/images/burger.png';
 import img1 from '../assets/images/img1.jpg';
 import img2 from '../assets/images/img2.jpg';
 import img3 from '../assets/images/img3.jpg';
 import img4 from '../assets/images/img4.jpg';
-
+import booth from '../assets/images/kick-o-matic.png';
 import logo from '../assets/images/logo.png';
-import burger from '../assets/images/burger.png';
 import cabbage from '../assets/images/raw-cabbage.png';
 import taco from '../assets/images/taco.png';
-import booth from '../assets/images/kick-o-matic.png';
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+
 
 const Home = (props) => {
-
-    const [prizes, setPrizes] = useState([])
-
-    useEffect(() => {
-        axios.get(process.env.REACT_APP_API_PATH + 'game/prizes').then(response => {
-            if ( response.data.prizes ) {
-                setPrizes(response.data.prizes)
-            }
-        }).catch(err => {
-            if ( err ) {
-                console.error(err)
-            }
-        })
-    }, [])
-
-    const renderPrizes = () => {
-        return prizes.map(prize => {
-            return (<li key={`prize_${prize.id}`}><span className="font-semibold text-yellow-600">{prize.prize_count}</span> prize of <span className="font-semibold text-green-800">{Number(prize.prize_amount).toLocaleString()}</span> BuyMore Dollars</li>)
-        })
-    }
 
     return (
         <main className="relative">
@@ -66,7 +44,10 @@ const Home = (props) => {
                     <div>
                         <h3>PRIZES INFO</h3>
                         <ul>
-                            {renderPrizes()}
+                            <li>1 prize of 10,000 BuyMore Dollars</li>
+                            <li>5 prizes of 750 BuyMore Dollars</li>
+                            <li>10 prizes of 100 BuyMore Dollars</li>
+                            <li>100 prizes of 20 BuyMore Dollars</li>
                         </ul>
                     </div>
                 </div>
