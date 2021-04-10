@@ -2,7 +2,7 @@ const connection = require('../include/database')
 
 const router = require('express').Router()
 
-const timeDelta = (60*2) // 24 seconds for debug
+const timeDelta = (24) // 24 seconds for debug
 // const timeDelta = (24 * 60 * 60) // one-day
 
 const timeGate = {

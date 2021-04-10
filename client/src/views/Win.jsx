@@ -10,7 +10,7 @@ const Win = (props) => {
             <div className="my-5 p-3 w-10/12 bg-theme-colors-l-gold shadow-lg">
                 <h2 className=" text-center text-3xl font-bold text-theme-colors-dark">Congratulations!</h2>
                 <p className="text-center mt-2 font-medium">Your prize is on it's way.</p>
-                <p className="text-center mt-2 text-sm"><span className="font-bold">100 BuyMore Dollars</span> will be added <br></br>to your account in 6-8 weeks</p>
+                <p className="text-center mt-2 text-sm"><span className="font-bold">{props.amountWon} BuyMore Dollars</span> will be added <br></br>to your account in 6-8 weeks</p>
 
             </div>
 

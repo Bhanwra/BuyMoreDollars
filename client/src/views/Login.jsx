@@ -46,11 +46,11 @@ const Login = (props) => {
                 <div className="grid grid-cols-2">
                     <div className="col-span-2 input-group mt-10">
                         <label htmlFor="email">Email</label>
-                        <input type="email" value={getEmail} onChange={(e) => {setEmail(e.target.value)}} required />
+                        <input type="email" value={getEmail} onChange={(e) => {setEmail(e.target.value)}} placeholder="Enter email" required />
                     </div>
                     <div className="col-span-2 input-group mt-10">
                         <label htmlFor="password">Password</label>
-                        <input type="password" value={getPassword} onChange={(e) => {setPassword(e.target.value)}} required />
+                        <input type="password" value={getPassword} onChange={(e) => {setPassword(e.target.value)}} placeholder="Enter password" required />
                     </div>
                     <div className="col-span-2 input-group mt-20">
                         <button type="submit" className="w-full">Login</button>

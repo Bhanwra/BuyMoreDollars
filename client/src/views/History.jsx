@@ -39,7 +39,7 @@ const History = (props) => {
             }
 
             return (
-                <div className="grid grid-cols-7 border items-center">
+                <div key={`history_${index}`} className="grid grid-cols-7 border items-center">
                     <div className="col-span-1 text-right p-2 px-4">{Number(index)+1}</div>
                     <div className="col-span-2 text-left p-2 px-4 font-semibold">BM$ {history[index].amount}</div>
                     <div className="col-span-2 text-center p-2 px-4">{payout}</div>

@@ -244,6 +244,7 @@ const Game = (props) => {
             prize: gameState.prize
         }).then( response => {
             if ( bool ) {
+                props.setAmountWon(gameState.prize.amount)
                 history.push('/win')
             } else {
                 history.push('/lost')

@@ -20,6 +20,7 @@ function App() {
 
   const [isLoggedIn, setLoggedIn] = useState(false)
   const [getUser, setUser] = useState(false)
+  const [amountWon, setAmountWon] = useState(0)
 
   useEffect(() => {
     // verifying login token
@@ -44,7 +45,7 @@ function App() {
   }
 
   const home = ( isLoggedIn ) ? <Redirect to="/game" /> : <Home />
-  const game = ( !isLoggedIn ) ? <Redirect to="/" /> : <Game user={getUser} />
+  const game = ( !isLoggedIn ) ? <Redirect to="/" /> : <Game user={getUser} setAmountWon={setAmountWon} />
   const profile = ( !isLoggedIn ) ? <Redirect to="/" /> : <Profile user={getUser}/>
   const history = ( !isLoggedIn ) ? <Redirect to="/" /> : <History user={getUser} />
 
@@ -78,7 +79,7 @@ function App() {
             </Route>
             <Route path="/win">
               { header }
-              <Win/>
+              <Win amountWon={amountWon}/>
             </Route>
             <Route path="/lost">
               { header }
