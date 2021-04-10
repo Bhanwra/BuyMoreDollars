@@ -89,24 +89,34 @@ const Register = (props) => {
             }
         })
 
-        // axios({
-        //     url: process.env.REACT_APP_API_PATH + 'user/register',
-        //     method: 'POST',
-        //     data: {
-        //         name: getName,
-        //         birthday: getBirthday,
-        //         phone: getPhone,
-        //         address: getAddress,
-        //         city: getCity,
-        //         province: getProvince,
-        //         zipCode: getZipCode,
-        //         country: getCountry,
-        //         email: getEmail,
-        //         password: getPassword
-        //     }
-        // }).then(response => {
-        //     console.log(response)
-        // })
+        let errorCount = 0
+        Object.keys(getFields).forEach(field => {
+            console.log(getFields[field].error)
+            if ( getFields[field].error != "" ) {
+                errorCount++
+            }
+        })
+
+        if ( errorCount == 0 ) {
+            axios({
+                url: process.env.REACT_APP_API_PATH + 'user/register',
+                method: 'POST',
+                data: {
+                    name: getFields.name.value,
+                    birthday: getFields.birthday.value,
+                    phone: getFields.phone.value,
+                    address: getFields.address.value,
+                    city: getFields.city.value,
+                    province: getFields.province.value,
+                    zipCode: getFields.zipCode.value,
+                    country: getFields.country.value,
+                    email: getFields.email.value,
+                    password: getFields.password.value
+                }
+            }).then(response => {
+                console.log(response)
+            })
+        }
     }
 
     return(
