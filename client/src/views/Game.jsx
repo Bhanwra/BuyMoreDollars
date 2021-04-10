@@ -108,7 +108,9 @@ const Game = (props) => {
                         let secondsTillCanPlay = Math.floor(timeTillCanPlay % 60)
                         let minutesTillCanPlay = Math.floor((timeTillCanPlay / 60) % 60)
                         let hoursTillCanPlay = Math.floor((timeTillCanPlay / (60*60)) % 60)
-                        canPlayRef.current.innerHTML = `${hoursTillCanPlay}:${minutesTillCanPlay}:${secondsTillCanPlay}`
+
+                        let time = `~${(hoursTillCanPlay > 0) ? hoursTillCanPlay + 'h' : ''} ${(minutesTillCanPlay > 0) ? minutesTillCanPlay + 'm' : ''} ${secondsTillCanPlay}s`
+                        canPlayRef.current.innerHTML = time
                     }
                 } else {
                     clearInterval(timerCanPlay)
@@ -219,6 +221,17 @@ const Game = (props) => {
                 show: true,
                 challenge: `(${challengeEquationFacets[0]} + ${challengeEquationFacets[1]}) - ${challengeEquationFacets[2]}`,
                 answer: (challengeEquationFacets[0] + challengeEquationFacets[1]) - challengeEquationFacets[2]
+            })
+        } else {
+            axios.post(process.env.REACT_APP_API_PATH + 'game/end', {
+                userId: props.user.id,
+                gameId: gameState.gameId,
+                win: false,
+                prize: gameState.prize
+            }).then( response => {
+                history.push('/lost')
+            }).catch( err => {
+                console.error(err)
             })
         }
     }
